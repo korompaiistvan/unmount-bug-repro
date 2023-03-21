@@ -28,3 +28,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  margin: 12px;
+  align-items: center;
+  gap: 24px;
+}
+
+.timeout-wrapper > label {
+  margin-right: 12px;
+}

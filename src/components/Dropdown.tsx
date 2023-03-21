@@ -1,16 +1,18 @@
-import { useRef, useState, ReactElement, ReactNode, useEffect } from "react"
+import { useRef, useState, ReactElement, ReactNode, useEffect, useDeferredValue } from "react"
 import './Dropdown.css'
 
 export interface DropdownProps {
     button: (toggleMenu: () => void) => ReactElement<HTMLButtonElement>
     children?: ReactNode
-    autoClose?: boolean | 'inside' | 'outside'
+    autoClose?: boolean | 'inside' | 'outside',
+    closeTimeoutMs?: number
 }
 
 export const Dropdown = ({
     button,
     children,
     autoClose = true,
+    closeTimeoutMs
 }: DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -21,7 +23,7 @@ export const Dropdown = ({
     // we add a little timeout to allow children's event listeners to fire before unmounting
     // FIXME: this is ugly and there is probably a better way
     const closeMenuWithTimeOut = () => {
-        setTimeout(() => setIsOpen(false), 100)
+        setTimeout(() => setIsOpen(false), closeTimeoutMs)
     }
 
     return (
@@ -55,6 +57,7 @@ const Menu = ({
         if (!onClose) return
         if (autoClose === true) {
             onClose()
+            return
         }
 
         if (autoClose === false) {
