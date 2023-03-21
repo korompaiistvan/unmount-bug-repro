@@ -16,7 +16,6 @@ export const Dropdown = ({
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
-        console.log('toggling')
     }
 
     // we add a little timeout to allow children's event listeners to fire before unmounting

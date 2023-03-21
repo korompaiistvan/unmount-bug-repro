@@ -3,7 +3,11 @@ import './App.css'
 import { Dropdown } from './components/Dropdown'
 
 function App() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const itemClickHandler = () => {
+    alert('Clicked')
+  }
+
   return (
     <div className="App">
       <Dropdown
@@ -17,9 +21,9 @@ function App() {
         )}
       >
         <>
-          <p>Item 1</p>
-          <p>Item 2</p>
-          <p>Item 3</p>
+          <p onClick={itemClickHandler}>Item 1</p>
+          <p onClick={itemClickHandler}>Item 2</p>
+          <p onClick={itemClickHandler}>Item 3</p>
         </>
         </Dropdown>
         
